@@ -1,7 +1,8 @@
 const ERROR_MESSAGES = {
     MAIN_LETRAS: 'A senha deve conter pelo menos 08 caracteres',
     MIN_DIGITO: 'A senha deve conter pelo menos 02 digitos',
-    UPPERCASE:'A senha deve conter pelo menos uma letra maiúscula'
+    UPPERCASE:'A senha deve conter pelo menos uma letra maiúscula',
+    CARAC_ESPECIAL: 'A senha deve conter pelo menos um caractere especial'
 };
 
 export function validarSenha(senha){

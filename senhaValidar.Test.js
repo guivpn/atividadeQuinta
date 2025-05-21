@@ -7,6 +7,12 @@ describe ('VALIDAÇÃO DE SENHAS', () =>{
         expect(result.errors).toContain('A senha deve conter pelo menos 08 caracteres');
     });
 
+        test('DEVE RETORNAR ERRO PARA A SENHA SEM CARACTERE ESPECIAL', () => {
+        const result = validatePassword('Abcdef12');
+        expect(result.isValid).toBe(false);
+        expect(result.errors).toContain('A senha deve conter pelo menos um caractere especial');
+    });
+
     test('DEVE RETORNAR ERRO PARA A SENHA COM MENOS DE 02 DÍGITOS' ,()=>{
         const result = validarSenha('Abcdefg!@');
         expect(result.isValid).toBe(false);
