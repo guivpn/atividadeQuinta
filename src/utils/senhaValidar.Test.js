@@ -1,6 +1,13 @@
 const {validarSenha} = require ('./senhaValidar');
 
 describe ('VALIDAÇÃO DE SENHAS', () =>{
+
+    test('DEVE RETORNAR VERDADEIRO PARA A SENHA VÁLIDA' ,()=>{
+        const result = validarSenha('Ab12!@#$');
+        expect(result.isValid).toBe(true);
+        expect(result.errors).toEqual([]);
+    })
+
     test('DEVE RETORNAR ERRO PARA A SENHA MENOR QUE 08 CARACTERES', ()=>{
         const result = validarSenha('ape4p');
         expect(result.isValid).toBe(false);

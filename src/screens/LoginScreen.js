@@ -1,8 +1,23 @@
 
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { StyleSheet, Text, TextInput, TouchableOpacity, View , useState} from 'react-native';
+import senhaValidar from '../src/utils/senhaValidar.js'
+import React, { useState } from 'react';
 
 
 export default function LoginScreen(){
+
+    const [senha, setSenha] = useState('')
+    const [errors, setErrors] = useState([])
+
+    const submit = () => {
+      const result = senhaValidar(senha);
+      setErrors(result.errors);
+
+      if (result.isValid) {
+      Alert.alert('Sucesso', 'Senha válida! Acesso permitido.');
+    }
+    }
+
   return(
     <View style={styles.container}>
       <Text style={styles.txtHome}>Validador de Senha</Text>
@@ -12,9 +27,11 @@ export default function LoginScreen(){
       style={styles.input}
       secureTextEntry
       placeholder='Insira sua Senha!'
+      value={senha}
+      onChangeText={setSenha}
       />
 
-      <TouchableOpacity style={styles.btn}>
+      <TouchableOpacity style={styles.btn} onPress={senhaValidar}>
         <Text style={styles.txtBtn}>Validar</Text>
       </TouchableOpacity>
 
